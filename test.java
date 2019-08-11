@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /*
  * @lc app=leetcode.cn id=5 lang=java
  *
@@ -81,7 +83,35 @@ class Test{
         if(result>=Integer.MAX_VALUE) return 0;
         return (int)result*sign;
     }
+    public static int myAtoi(String str) {
+        String result = str.trim();
+        if(result.length()==0) return 0;
+        char start = result.charAt(0);
+        if(start!='+'&&start!='-'&&!Character.isDigit(start)) return 0;
+
+        Pattern p = Pattern.compile("^[+-]?\\d+");
+        Matcher m = p.matcher(str);
+        String s = "";
+        if(m.find())
+        {
+            s = m.group(0);
+            s = s.replace("+","") ;
+            
+        }else{
+            return 0;
+        }
+        if(s.length()>11) return Integer.MAX_VALUE;
+        long resul = Long.parseLong(s);
+        if(resul>Integer.MAX_VALUE||resul<Integer.MIN_VALUE) return Integer.MAX_VALUE;
+        return Integer.parseInt(s);
+        
+    }
     public static void main(String[] args) { 
+        String s = "  0000000000012345678";
+        s = s.trim();
+        System.out.println(s.replaceAll("^[+-]?[0]{1,}", ""));
+        System.out.println(myAtoi("   -42"));
+        System.out.println(Integer.MAX_VALUE);
         // HashMap<Integer,Integer> m = new HashMap<>();
         // int x = 3;
         // m.put(x, 5);
@@ -105,8 +135,17 @@ class Test{
         // System.out.println(x%100);
         // int x = -2147483648;
         // System.out.println(reverse(x));
-        String s = "  dshaj   ";
-        System.out.println(s.trim());
+        // String s = "  dshaj-+23157sagd-21312   ";
+        // System.out.println(s.trim());
+        // Pattern p = Pattern.compile("[+-]?\\d+");
+        // Matcher m = p.matcher(s);
+        
+        // if(m.find())
+        // {
+        //     System.out.println(m.group(0));
+        // }
+
+        // System.out.println(Integer.parseInt("-123678"));
         // System.out.println(longestPalindrome(test));
     }
 }
