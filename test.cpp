@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<unordered_map>
+#include<limits.h>
 using namespace std;
 
 /*
@@ -96,14 +97,81 @@ public:
     }
 };
 
+int myAtoi(string str) {
+        int sign=1;
+        int length=str.size();
 
+        int i=0;
+        int base=0;
+
+        while(str[i]==' ') i++;
+
+        if(str[i]=='+') sign=1;
+        else if(str[i]=='-') sign=-1;
+        else if(str[i]>='0'&&str[i]<='9') base=str[i]-'0';
+        else return 0;
+        i++;
+        while(str[i]>='0'&&str[i]<='9')
+        {
+            std::cerr << base << std::endl;
+            if(base>INT_MAX/10||(base==INT_MAX/10&&(str[i]-'0'>=7)))
+            {
+                if(sign==1) return INT_MAX;
+                if(sign==-1) return INT_MIN;
+            }else
+            {
+                base = base*10 + (str[i]-'0');
+            }
+            
+            i++;
+        }
+        
+        return base*sign;
+
+    }
+int isPalindrome(int x) {
+        int z= x;
+        if(x<0)
+            return false;
+        int length =0;
+        while(x!=0){
+            x/=10;
+            length++;
+        }
+        int high = 1;
+        for(int i=0;i<length-1;i++)
+        {
+            high *= 10;
+        }
+        int low = 10;
+        int y =z;
+        x = z;
+        int count=0;
+        while(true)
+        // while((x/high==y%low)&&(count<length/2))
+        {
+            std::cerr << x << " "<<x/high << " "<<y << " "<<y%low<<std::endl;
+            if(x/high!=y%low) return false;
+            else if(count>=length/2) return true;
+            else{
+                count++;
+                // high = high/10;
+                // low = low*10;
+                y = y/10;
+                x = x-x/high;
+                high = high/10;
+            }
+            
+        }
+    }
 int main()
 {
-    Solution *solution = new Solution;
-    string s = "ababc";
-    string result = solution->longestPalindrome(s);
+    // int result = myAtoi("-2147483648");
+    // Solution *solution = new Solution;
+    // string s = "ababc";
+    // string result = solution->longestPalindrome(s);
     // std::cerr << solution->delete_s(s) << std::endl;
-    std::cerr << result << std::endl;
+    std::cerr << isPalindrome(121) << std::endl;
     // std::cout << "hello world" << std::endl;
     // vector<int> nums;
     // nums.push_back(1);
