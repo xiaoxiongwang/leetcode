@@ -16,6 +16,7 @@ public:
             {
                 result.push_back(i);
                 result.push_back(m[target-a]);
+                break;
             }
             m[a] = i;
         }

@@ -2,11 +2,38 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Test2",
+            "request": "launch",
+            "mainClass": "Test2",
+            "projectName": ".leetcode_c5567bc6"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TestGraph",
+            "request": "launch",
+            "mainClass": "TestGraph",
+            "projectName": ".leetcode_c5567bc6"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Parenthese",
+            "request": "launch",
+            "mainClass": "Parenthese",
+            "projectName": ".leetcode_c5567bc6"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - test_tree",
+            "request": "launch",
+            "mainClass": "test_tree",
+            "projectName": ".leetcode_c5567bc6"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch)",
             "request": "launch",
             "mainClass": ""
         },
-
         {
             "type": "java",
             "name": "Debug (Launch) - Current File",

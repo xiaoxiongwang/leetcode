@@ -27,7 +27,7 @@ class Solution {
             if(map_char[temp]==-1)
             {
                 map_char[temp] = j;
-            }else if(map_char[temp]<start){
+            }else if(map_char[temp]<start){//tmmzuxt
                 map_char[temp]= j;
             }else{
                 if(j-start>max_length) max_length = j- start;
@@ -35,7 +35,7 @@ class Solution {
                 map_char[temp] = j;
                 continue;
             }
-            if(j+1-start>max_length)
+            if(j+1-start>max_length)//结束
                 max_length = j+1-start;
         }
 

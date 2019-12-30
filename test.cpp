@@ -2,6 +2,7 @@
 #include<vector>
 #include<unordered_map>
 #include<limits.h>
+#include<string>
 using namespace std;
 
 /*
@@ -97,6 +98,26 @@ public:
     }
 };
 
+bool isMatch(string s, string p) {
+        int s_length = s.size();
+        int p_length = p.size();
+
+        if(p_length<=0) return s_length<=0;
+
+        if(p_length>1 && p[1]=='*'){
+            // std::cerr << p.substr(2,p_length).size() << std::endl;
+            std::cerr << s.substr(1,s_length) << std::endl;
+            if(s_length<=0) return isMatch("",p.substr(2,p_length));
+            return isMatch(s,p.substr(2,p_length))||((s[0]==p[0]||p[0]=='.')&&isMatch(s.substr(1,s_length),p));
+        }else if(p[0]=='.'){
+            if(s_length<=0) return false;
+            return isMatch(s.substr(1,s_length),p.substr(1,p_length));
+        }else{
+            if(s_length<=0) return false;
+            return (s[0]==p[0])&&isMatch(s.substr(1,s_length),p.substr(1,p_length));
+        }
+}
+
 int myAtoi(string str) {
         int sign=1;
         int length=str.size();
@@ -166,12 +187,15 @@ int isPalindrome(int x) {
     }
 int main()
 {
+    // string s = "p*";
+    // std::cerr << s.substr(3,2) << std::endl;
     // int result = myAtoi("-2147483648");
-    // Solution *solution = new Solution;
+    Solution *solution = new Solution;
+    std::cerr << isMatch("aa","a*")<<std::endl;
     // string s = "ababc";
     // string result = solution->longestPalindrome(s);
     // std::cerr << solution->delete_s(s) << std::endl;
-    std::cerr << isPalindrome(121) << std::endl;
+    // std::cerr << isPalindrome(121) << std::endl;
     // std::cout << "hello world" << std::endl;
     // vector<int> nums;
     // nums.push_back(1);

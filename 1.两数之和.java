@@ -18,6 +18,7 @@ class Solution {
                 // result =  new int[]{i,m.get((target-a))};
                 result[0] = i;
                 result[1] = m.get((target-a));
+                break;
             }
             m.put(nums[i], i);   
         }
